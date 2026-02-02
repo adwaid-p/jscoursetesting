@@ -45,6 +45,33 @@ switch (userType) {
 }
 
 
-let isAuthenticated = true;
-let authenticationStatus = isAuthenticated ? "Authenticated" : "Not authenticated";
-console.log("Authentication Status:", authenticationStatus);
+function checkAuthorization(role) {
+    if (!role) {
+        console.log("Invalid input. Role cannot be empty.");
+        return;
+    }
+
+    role = role.toLowerCase();
+
+    if (role === "employee") {
+        console.log("Authorized: You have full access to Dietary Services.");
+
+    } else if (role === "enrolled member") {
+        console.log("Authorized: You have access to Dietary Services and one-on-one interaction with a dietician.");
+
+    } else if (role === "subscriber") {
+        console.log("Authorized: You have partial access to Dietary Services.");
+
+    } else if (role === "non-subscriber") {
+        console.log("Access Denied: Please enroll or subscribe to avail Dietary Services.");
+
+    } else {
+        console.log("Invalid role entered. Please try again.");
+    }
+}
+
+// Example calls
+checkAuthorization("Employee");
+checkAuthorization("Enrolled Member");
+checkAuthorization("Subscriber");
+checkAuthorization("Non-Subscriber");
